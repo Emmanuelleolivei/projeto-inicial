@@ -29,6 +29,29 @@ function alertar (event){
    // if(resultado == 0){
    // alert(este numero é par!");   
    // }
+
+ const url = `https://viacep.com.br/ws/${cep.value}/json`;
+ 
+  
+ fetch(url)
+.then(function(resposta){
+      return resposta.json();
+})
+.then(
+   function(dadosDoEndereço){
+      logradouro.value = dadosDoEndereço.logradouro;
+      bairro.value = dadosDoEndereço.bairro;
+      cidade.value = dadosDoEndereço.localidade;
+      estado.value = dadosDoEndereço.uf;
+      complemento.value = dadosDoEndereço.complemento;
+
+   }
+)
+.catch(function(e){
+   alert(e.message());
+});
+
+
    saida.innerText = "nome: " + nome.value +
        "\n email: " + email.value +
        "\n telefone: " + telefone.value +
