@@ -30,6 +30,15 @@ function alertar (event){
    // alert(este numero é par!");   
    // }
 
+   //validação dos dados
+   if(cep.value.length < 8){
+      alert('entre com um cep valido!');
+      return;
+   }
+   
+   //formartar os dados 
+   cep.value = cep.value.replace('-', '');
+
  const url = `https://viacep.com.br/ws/${cep.value}/json`;
  
   
@@ -45,27 +54,25 @@ function alertar (event){
       estado.value = dadosDoEndereço.uf;
       complemento.value = dadosDoEndereço.complemento;
 
+      saidadedados(); //chamada da função
    }
 )
 .catch(function(e){
    alert(e.message());
 });
 
+}
+function saidadedados(){
 
    saida.innerText = "nome: " + nome.value +
-       "\n email: " + email.value +
-       "\n telefone: " + telefone.value +
-       "\n CEP: " + cep.value +
-       "\n logradouro: " + logradouro.value +
-       "\n numero: " + numero.value +
-       "\n complemento: " + complemento.value +
-       "\n bairro: " + bairro.value +
-       "\n cidade: " + cidade.value +
-       "\n estado: " + estado.value; 
-       
-       
-       
-
-       
-
+   "\n email: " + email.value +
+   "\n telefone: " + telefone.value +
+   "\n CEP: " + cep.value +
+   "\n logradouro: " + logradouro.value +
+   "\n numero: " + numero.value +
+   "\n complemento: " + complemento.value +
+   "\n bairro: " + bairro.value +
+   "\n cidade: " + cidade.value +
+   "\n estado: " + estado.value; 
 }
+
